@@ -64,6 +64,6 @@ Eu escolheria o **Caso de Teste 3 (R$ 250,00)**, porque ele verifica uma situaç
 
 Para liberar a funcionalidade para produção, eu verificaria os **resultados dos testes, prints ou outras evidências dos testes realizados, possíveis erros encontrados e se esses erros foram corrigidos e testados novamente**.
 
-No código `checkout.js`, os cinco casos foram executados e os resultados esperados foram comparados com os resultados obtidos.
+No código, os cinco casos foram executados e os resultados esperados foram comparados com os resultados obtidos.
 
 Assim, podemos ter mais segurança de que o checkout está funcionando de acordo com as regras definidas.
