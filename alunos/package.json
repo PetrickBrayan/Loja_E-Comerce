@@ -1,0 +1,17 @@
+{
+  "name": "loja-aurora",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Loja virtual didática para práticas de teste de software.",
+  "scripts": {
+    "start": "node server.js",
+    "seed": "node scripts/restore.js",
+    "reset": "node scripts/restore.js",
+    "restore": "node scripts/restore.js",
+    "generate": "node scripts/generate.js",
+    "test": "node scripts/test.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
