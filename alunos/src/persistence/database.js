@@ -10,13 +10,12 @@ function openDatabase(filePath) {
   }
 
   function persist() {
-    const onDisk = readFile(filePath);
     const next = {
       users: state.users,
       products: state.products,
       coupons: state.coupons,
       sessions: state.sessions,
-      orders: onDisk.orders,
+      orders: state.orders,
     };
     fs.writeFileSync(filePath, JSON.stringify(next, null, 2));
   }
@@ -111,6 +110,7 @@ function openDatabase(filePath) {
 
     addOrder(order) {
       state.orders.push(order);
+      persist();
     },
 
     listOrders() {

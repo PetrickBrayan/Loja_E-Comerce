@@ -1,0 +1,48 @@
+✖ integração: pedido reduz estoque (137.4848ms)
+✖ integração: pedido criado pode ser consultado (118.6213ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 0
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 325.7297
+
+✖ failing tests:
+
+test at tests\aula02.test.js:21:1
+✖ integração: pedido reduz estoque (137.4848ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  5 !== 3
+  
+      at TestContext.<anonymous> (C:\Users\USUARIO\OneDrive\Área de Trabalho\Loja_E-Comerce\alunos\tests\aula02.test.js:32:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 5,
+    expected: 3,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\aula02.test.js:34:1
+✖ integração: pedido criado pode ser consultado (118.6213ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 200
+  
+      at TestContext.<anonymous> (C:\Users\USUARIO\OneDrive\Área de Trabalho\Loja_E-Comerce\alunos\tests\aula02.test.js:42:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

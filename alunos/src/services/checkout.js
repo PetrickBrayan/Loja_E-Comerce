@@ -4,6 +4,7 @@ const { isListedInCatalog } = require("../domain/catalog");
 const { quoteLines } = require("../domain/pricing");
 const { totalsForOrder } = require("../domain/orderTotals");
 const { normalizeAddress } = require("../domain/address");
+const { hasAvailableStock } = require("../domain/stock");
 
 const recentCheckouts = new Map();
 const CHECKOUT_WINDOW_MS = 5000;
@@ -63,6 +64,23 @@ function placeOrder(db, user, body) {
     return { ok: false, status: 400, error: quote.message };
   }
 
+  // RN-03: a quantidade não pode passar do estoque. Soma por produto (o mesmo
+  // produto pode aparecer em mais de uma linha) e valida TUDO antes de alterar qualquer coisa.
+  const requested = new Map();
+  for (const line of lines) {
+    requested.set(line.productId, (requested.get(line.productId) || 0) + Number(line.quantity));
+  }
+  for (const [productId, quantity] of requested) {
+    const product = db.findProduct(productId);
+    if (!hasAvailableStock(quantity, product.stock)) {
+      return {
+        ok: false,
+        status: 400,
+        error: `Estoque insuficiente para "${product.name}". Disponível: ${product.stock}.`,
+      };
+    }
+  }
+
   const addressResult = normalizeAddress(body.address);
   const totals = totalsForOrder(quote);
   const order = {
@@ -80,6 +98,11 @@ function placeOrder(db, user, body) {
     status: "confirmado",
   };
 
+  // RN-08: reduz o estoque e grava o pedido (só depois de tudo validado).
+  for (const [productId, quantity] of requested) {
+    const product = db.findProduct(productId);
+    db.updateProduct(productId, { stock: product.stock - quantity });
+  }
   db.addOrder(order);
 
   const result = { ok: true, status: 201, order };
