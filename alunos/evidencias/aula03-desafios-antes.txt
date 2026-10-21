@@ -1,0 +1,61 @@
+✔ desafio: cupom com validade HOJE ainda vale à tarde (fim do dia) (2.4021ms)
+✔ desafio: cupom vale no último segundo do dia informado (23:59:59 em Brasília) (0.1614ms)
+✖ desafio: cupom vence no primeiro instante do dia seguinte (00:00 em Brasília) (1.4622ms)
+✖ desafio funcional: cotação com cupom vencido é recusada (0.4801ms)
+✔ desafio: cupom de valor fixo maior que o subtotal é limitado ao subtotal (RN-05) (0.1866ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 3
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 94.1489
+
+✖ failing tests:
+
+test at tests\aula03desafio.test.js:20:1
+✖ desafio: cupom vence no primeiro instante do dia seguinte (00:00 em Brasília) (1.4622ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at C:\Users\USUARIO\Desktop\Loja_E-Comerce\alunos\tests\aula03desafio.test.js:21:51
+      at comRelogio (C:\Users\USUARIO\Desktop\Loja_E-Comerce\alunos\tests\aula03desafio.test.js:10:16)
+      at TestContext.<anonymous> (C:\Users\USUARIO\Desktop\Loja_E-Comerce\alunos\tests\aula03desafio.test.js:21:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\aula03desafio.test.js:23:1
+✖ desafio funcional: cotação com cupom vencido é recusada (0.4801ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at C:\Users\USUARIO\Desktop\Loja_E-Comerce\alunos\tests\aula03desafio.test.js:26:12
+      at comRelogio (C:\Users\USUARIO\Desktop\Loja_E-Comerce\alunos\tests\aula03desafio.test.js:10:16)
+      at TestContext.<anonymous> (C:\Users\USUARIO\Desktop\Loja_E-Comerce\alunos\tests\aula03desafio.test.js:24:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

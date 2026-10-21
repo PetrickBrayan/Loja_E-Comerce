@@ -1,0 +1,38 @@
+✖ desafio API: cupom inexistente é recusado (36.3375ms)
+✖ desafio API: cupom vencido da base (ANTIGO, validade 06/10/2026) é recusado (4.1648ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 0
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 116.6288
+
+✖ failing tests:
+
+test at tests\aula03api.test.js:11:1
+✖ desafio API: cupom inexistente é recusado (36.3375ms)
+  [TypeError: fetch failed] {
+    [cause]: Error: connect ECONNREFUSED 127.0.0.1:3000
+        at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1864:16) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 3000
+    }
+  }
+
+test at tests\aula03api.test.js:16:1
+✖ desafio API: cupom vencido da base (ANTIGO, validade 06/10/2026) é recusado (4.1648ms)
+  [TypeError: fetch failed] {
+    [cause]: Error: connect ECONNREFUSED 127.0.0.1:3000
+        at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1864:16) {
+      errno: -4078,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 3000
+    }
+  }
