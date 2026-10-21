@@ -1,0 +1,18 @@
+✔ unitário: abaixo de 200 não há desconto (1.1161ms)
+✔ unitário: exatamente 200 recebe 10% (1.0113ms)
+✔ unitário: quantidade negativa é inválida (0.1514ms)
+✔ unitário: meio centavo arredonda para cima (0.1085ms)
+✔ funcional: compra de 300 tem desconto e frete grátis (0.3113ms)
+✔ funcional: abaixo de 300 frete custa 18,50 (0.1356ms)
+✔ confirmação: cupom vencido é recusado (2.0579ms)
+✔ regressão: cupom válido de 20% não acumula (0.4144ms)
+✔ regressão: cupom de 5% preserva desconto automático maior (0.6858ms)
+✔ regressão: cupom inativo continua recusado (0.1238ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 89.6283

@@ -73,6 +73,7 @@ D3 — A compra acima do estoque era aceita (checkout.js)
 - ENTRADA = comprar 6 unidades com estoque 5
 - ESPERADO = compra recusada, com mensagem / OBTIDO = 201, pedido criado
 - PROBLEMA = a regra RN-03 existia (hasAvailableStock em stock.js), mas só era usada no catálogo para mostrar "em estoque" (api.js, linha 75). O checkout nunca a chamava.
+
 - RESOLUÇÃO = antes de alterar qualquer coisa, o checkout soma a quantidade por produto e valida:
   ```javascript
   if (!hasAvailableStock(quantity, product.stock)) {
