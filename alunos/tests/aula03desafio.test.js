@@ -7,7 +7,7 @@ const { setClock, resetClock, REFERENCE_INSTANT } = require('../src/domain/clock
 const cupom = (extra = {}) => ({code:'TESTE', type:'percent', value:10, expiresAt:'2026-10-07', active:true, ...extra});
 function comRelogio(instante, fn) {
   setClock(instante);
-  try { return fn(); } finally { resetClock(); }      // desfaz o relógio mesmo se a asserção falhar
+  try { return fn(); } finally { resetClock(); }     
 }
 const cotar = (coupon) => quoteLines({lines:[{productId:'produto-teste', name:'Produto Teste', unitPrice:150, quantity:2}], coupon});
 
@@ -30,8 +30,8 @@ test('desafio: cupom de valor fixo maior que o subtotal é limitado ao subtotal 
   const r = comRelogio(REFERENCE_INSTANT, () => cotar(cupom({type:'fixed', value:500, expiresAt:'2099-12-31'})));
   assert.equal(r.ok, true);
   assert.equal(r.subtotal, 300);
-  assert.equal(r.couponDiscount, 300);     // 500 limitado ao subtotal
-  assert.equal(r.discount, 300);           // maior que os 30 do desconto automático
+  assert.equal(r.couponDiscount, 300);     
+  assert.equal(r.discount, 300);           
   assert.equal(r.benefit, 'cupom');
-  assert.equal(r.total, 0);                // 300 - 300 + frete 0 (subtotal 300)
+  assert.equal(r.total, 0);                
 });
