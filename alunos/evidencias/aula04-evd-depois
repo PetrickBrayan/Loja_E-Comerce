@@ -1,0 +1,8 @@
+1 acessibilidade: cadastro sem violações automatizadas detectadas = bastou colocar o comando npm start
+2 acessibilidade: Nome possui rótulo associado = problema no label no html corrigido na sesão de cadastro
+ 3 acessibilidade: adicionar produto pode receber foco por Tab =
+
+ 1 vlibras
+ 2 Acessibilidade no Formulário Administrativo
+ 3 Usabilidade na Sequência de Tabulação do Menu 
+ 4 Usabilidade nos Atributos do Carrinho

@@ -1,0 +1,63 @@
+1 acessibilidade: cadastro sem violações automatizadas detectadas
+
+Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3000/#cadastro
+Call log:
+  - navigating to "http://127.0.0.1:3000/#cadastro", waiting until "load"
+
+
+  2 | const AxeBuilder = require('@axe-core/playwright').default;
+  3 | test('acessibilidade: cadastro sem violações automatizadas detectadas', async ({page}) => {
+> 4 |   await page.goto('/#cadastro');
+    |              ^
+  5 |   await expect(page.locator('#view-register')).toBeVisible();
+  6 |   const resultado = await new AxeBuilder({page}).analyze();
+  7 |   expect(resultado.violations).toEqual([]);
+    at C:\Users\Univassouras\Desktop\Loja_E-Comerce\alunos\tests\interface\aula04.spec.cjs:4:14
+
+
+   2 acessibilidade: Nome possui rótulo associado
+
+    Error: expect(locator).toBeVisible() failed
+
+Locator: locator('#register-form').getByLabel('Nome', { exact: true })
+Expected: visible
+Timeout: 5000ms
+Error: element(s) not found
+
+Call log:
+  - Expect "toBeVisible" locator('#register-form').getByLabel('Nome', { exact: true }) with timeout 5000ms
+  - waiting for locator('#register-form').getByLabel('Nome', { exact: true })
+
+
+  10 |   await page.goto('/#cadastro');
+  11 |   await expect(page.locator('#view-register')).toBeVisible();
+> 12 |   await expect(page.locator('#register-form').getByLabel('Nome',{exact:true})).toBeVisible();
+     |                                                                                ^
+  13 | });
+  14 | test('acessibilidade: adicionar produto pode receber foco por Tab', async ({page}) => {
+  15 |   await page.goto('/#catalogo');
+    at C:\Users\Univassouras\Desktop\Loja_E-Comerce\alunos\tests\interface\aula04.spec.cjs:12:80
+
+
+    3 acessibilidade: adicionar produto pode receber foco por Tab
+
+    Error: expect(locator).toBeFocused() failed
+
+Locator:  locator('[data-testid="add-to-cart"][data-product-id="produto-teste"]')
+Expected: focused
+Received: inactive
+Timeout:  5000ms
+
+Call log:
+  - Expect "toBeFocused" locator('[data-testid="add-to-cart"][data-product-id="produto-teste"]') with timeout 5000ms
+  - waiting for locator('[data-testid="add-to-cart"][data-product-id="produto-teste"]')
+    14 × locator resolved to <div data-testid="add-to-cart" class="button button-primary" data-product-id="produto-teste">Adicionar ao carrinho</div>
+       - unexpected value "inactive"
+
+
+  18 |   await page.locator('#refresh-catalog').focus();
+  19 |   await page.keyboard.press('Tab');
+> 20 |   await expect(alvo).toBeFocused();
+     |                      ^
+  21 | });
+    at C:\Users\Univassouras\Desktop\Loja_E-Comerce\alunos\tests\interface\aula04.spec.cjs:20:22
