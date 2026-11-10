@@ -54,8 +54,7 @@ Aurora.loadOrders = async function loadOrders() {
     return;
   }
   status.textContent = "";
-  // Uma única atribuição de HTML: sem medir a altura de cada cartão (forçava o navegador a recalcular o layout a cada pedido).
-  list.innerHTML = orders.map(renderOrder).join("");
+  
 };
 
 Aurora.initOrders = function initOrders() {};

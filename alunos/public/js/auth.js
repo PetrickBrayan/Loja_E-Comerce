@@ -81,7 +81,7 @@ Aurora.initAuth = function initAuth() {
     try {
       await Aurora.api.post("/api/auth/logout", {});
     } catch (error) {
-      /* a sessão local é encerrada mesmo se a rede falhar */
+      
     }
     localStorage.removeItem("aurora-token");
     Aurora.state.user = null;

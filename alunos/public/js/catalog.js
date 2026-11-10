@@ -51,8 +51,7 @@ function buildCard(product) {
   return card;
 }
 
-// Os cartões são criados UMA vez por carga do catálogo (RNF-06). Filtrar só mostra ou esconde
-// cartões que já existem: não refaz a chamada à API e não recria elementos a cada tecla.
+
 let entries = [];
 let entriesVersion = 0;
 let gridVersion = -1;
@@ -109,7 +108,7 @@ Aurora.loadCatalog = async function loadCatalog() {
 };
 
 Aurora.initCatalog = function initCatalog() {
-  // Busca no navegador, com pequena espera (debounce) para agrupar as teclas digitadas.
+  
   document.getElementById("search").addEventListener("input", () => {
     clearTimeout(searchTimer);
     searchTimer = setTimeout(Aurora.renderCatalog, 150);
@@ -117,7 +116,7 @@ Aurora.initCatalog = function initCatalog() {
   document.getElementById("category-filter").addEventListener("change", () => {
     Aurora.renderCatalog();
   });
-  // RNF-07: o tratador do botão é registrado uma única vez (antes era somado a cada renderização).
+  
   document.getElementById("refresh-catalog").addEventListener("click", () => {
     Aurora.loadCatalog();
   });
