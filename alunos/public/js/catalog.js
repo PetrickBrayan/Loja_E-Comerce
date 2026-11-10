@@ -51,23 +51,37 @@ function buildCard(product) {
   return card;
 }
 
+// Os cartões são criados UMA vez por carga do catálogo (RNF-06). Filtrar só mostra ou esconde
+// cartões que já existem: não refaz a chamada à API e não recria elementos a cada tecla.
+let entries = [];
+let entriesVersion = 0;
+let gridVersion = -1;
+let searchTimer = null;
+
+function buildEntries(products) {
+  return products.map((product) => ({
+    card: buildCard(product),
+    category: product.category,
+    text: `${product.name} ${product.category} ${product.description}`.toLowerCase(),
+  }));
+}
+
 Aurora.renderCatalog = function renderCatalog() {
   const term = document.getElementById("search").value.trim().toLowerCase();
   const category = document.getElementById("category-filter").value;
   const grid = document.getElementById("catalog-grid");
-  grid.replaceChildren();
 
-  for (const product of Aurora.state.products) {
-    const card = buildCard(product);
-    const matchesTerm = !term || `${product.name} ${product.category} ${product.description}`.toLowerCase().includes(term);
-    const matchesCategory = !category || product.category === category;
-    card.hidden = !(matchesTerm && matchesCategory);
-    grid.appendChild(card);
+  if (gridVersion !== entriesVersion) {
+    const fragment = document.createDocumentFragment();
+    for (const entry of entries) fragment.appendChild(entry.card);
+    grid.replaceChildren(fragment);
+    gridVersion = entriesVersion;
   }
 
-  document.getElementById("refresh-catalog").addEventListener("click", () => {
-    Aurora.loadCatalog();
-  });
+  for (const entry of entries) {
+    const visible = (!term || entry.text.includes(term)) && (!category || entry.category === category);
+    if (entry.card.hidden === visible) entry.card.hidden = !visible;
+  }
 };
 
 let catalogToken = 0;
@@ -88,16 +102,24 @@ Aurora.loadCatalog = async function loadCatalog() {
   const products = await Aurora.api.get("/api/products");
   if (token !== catalogToken) return;
   Aurora.state.products = products;
+  entries = buildEntries(products);
+  entriesVersion += 1;
   fillCategories(products);
   Aurora.renderCatalog();
 };
 
 Aurora.initCatalog = function initCatalog() {
+  // Busca no navegador, com pequena espera (debounce) para agrupar as teclas digitadas.
   document.getElementById("search").addEventListener("input", () => {
-    Aurora.loadCatalog();
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(Aurora.renderCatalog, 150);
   });
   document.getElementById("category-filter").addEventListener("change", () => {
     Aurora.renderCatalog();
+  });
+  // RNF-07: o tratador do botão é registrado uma única vez (antes era somado a cada renderização).
+  document.getElementById("refresh-catalog").addEventListener("click", () => {
+    Aurora.loadCatalog();
   });
   return Aurora.loadCatalog();
 };

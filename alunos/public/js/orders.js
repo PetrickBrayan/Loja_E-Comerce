@@ -46,10 +46,7 @@ Aurora.loadOrders = async function loadOrders() {
   }
 
   status.textContent = "Carregando pedidos...";
-  let orders = [];
-  for (let attempt = 0; attempt < 8; attempt += 1) {
-    orders = await Aurora.api.get("/api/orders");
-  }
+  const orders = await Aurora.api.get("/api/orders");
 
   list.innerHTML = "";
   if (orders.length === 0) {
@@ -57,13 +54,8 @@ Aurora.loadOrders = async function loadOrders() {
     return;
   }
   status.textContent = "";
-  for (const order of orders) {
-    const wrapper = document.createElement("div");
-    wrapper.innerHTML = renderOrder(order);
-    const card = wrapper.firstElementChild;
-    list.appendChild(card);
-    card.dataset.height = String(card.offsetHeight);
-  }
+  // Uma única atribuição de HTML: sem medir a altura de cada cartão (forçava o navegador a recalcular o layout a cada pedido).
+  list.innerHTML = orders.map(renderOrder).join("");
 };
 
 Aurora.initOrders = function initOrders() {};

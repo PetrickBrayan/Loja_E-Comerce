@@ -39,7 +39,4 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (!location.hash) location.hash = "#catalogo";
   Aurora.applyRoute();
   window.addEventListener("hashchange", () => Aurora.applyRoute());
-  setInterval(() => {
-    fetch("/api/products").catch(() => {});
-  }, 2000);
 });

@@ -2,20 +2,19 @@
 
 function listVisibleOrders(db, userId) {
   const owned = db.listOrders().filter((order) => order.userId === userId);
-  return owned.map((order) => {
-    const items = order.items.map((item) => {
-      let quantitySoldToCustomer = 0;
-      for (const current of owned) {
-        for (const candidate of current.items) {
-          if (candidate.productId === item.productId) {
-            quantitySoldToCustomer += Number(candidate.quantity) || 0;
-          }
-        }
-      }
-      return { ...item, quantitySoldToCustomer };
-    });
-    return { ...order, items };
-  });
+
+  // Soma uma única vez, por produto, quanto o cliente comprou (antes: um laço dentro de outro, O(n²)).
+  const soldByProduct = new Map();
+  for (const current of owned) {
+    for (const candidate of current.items) {
+      soldByProduct.set(candidate.productId, (soldByProduct.get(candidate.productId) || 0) + (Number(candidate.quantity) || 0));
+    }
+  }
+
+  return owned.map((order) => ({
+    ...order,
+    items: order.items.map((item) => ({ ...item, quantitySoldToCustomer: soldByProduct.get(item.productId) || 0 })),
+  }));
 }
 
 module.exports = {
