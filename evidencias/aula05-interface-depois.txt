@@ -1,0 +1,27 @@
+npm notice run npx
+npm notice run playwright test aula05-desempenho.spec.cjs --timeout=90000
+Error: Playwright Test did not expect test() to be called here.
+Most common reasons include:
+- You are calling test() in a configuration file.
+- You are calling test() in a file that is imported by the configuration file.
+- You have two different versions of @playwright/test. This usually happens
+  when one of the dependencies in your package.json depends on @playwright/test.
+- You are calling test() from an async test.describe() block. Only sync ones are supported.
+
+   at alunos\tests\interface\aula05-desempenho.spec.cjs:29
+
+  27 | }
+  28 |
+> 29 | test('RNF-09: em repouso, a tela não repete chamadas a /api/products (janela de 10 s)', async ({ page }) => {
+     | ^
+  30 |   await abrirCatalogo(page);
+  31 |   const chamadas = contarGet(page, '/api/products');          // conta só a partir daqui (carga inicial já passou)
+  32 |   await page.waitForTimeout(10000);
+    at _TestTypeImpl._currentSuite (C:\Users\USUARIO\Desktop\Loja_E-Comerce\alunos\node_modules\playwright\lib\common\index.js:2235:13)
+    at _TestTypeImpl._createTest (C:\Users\USUARIO\Desktop\Loja_E-Comerce\alunos\node_modules\playwright\lib\common\index.js:2249:24)
+    at test (C:\Users\USUARIO\Desktop\Loja_E-Comerce\alunos\node_modules\playwright\lib\common\index.js:1169:12)
+    at Object.<anonymous> (C:\Users\USUARIO\Desktop\Loja_E-Comerce\alunos\tests\interface\aula05-desempenho.spec.cjs:29:1)
+Error: No tests found.
+Make sure that arguments are regular expressions matching test files.
+You may need to escape symbols like "$" or "*" and quote the arguments.
+

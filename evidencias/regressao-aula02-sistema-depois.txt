@@ -1,0 +1,27 @@
+npm notice run npx
+npm notice run playwright test aula02.spec.cjs
+Error: Playwright Test did not expect test() to be called here.
+Most common reasons include:
+- You are calling test() in a configuration file.
+- You are calling test() in a file that is imported by the configuration file.
+- You have two different versions of @playwright/test. This usually happens
+  when one of the dependencies in your package.json depends on @playwright/test.
+- You are calling test() from an async test.describe() block. Only sync ones are supported.
+
+   at alunos\tests\aula02.spec.cjs:19
+
+  17 | }
+  18 |
+> 19 | test('sistema: jornada de compra e histórico após recarregar', async ({page}) => {
+     | ^
+  20 |   await preparar(page);
+  21 |   const resposta = page.waitForResponse(r => r.url().endsWith('/api/checkout') && r.request().method()==='POST');
+  22 |   await page.getByTestId('checkout-button').click();
+    at _TestTypeImpl._currentSuite (C:\Users\USUARIO\Desktop\Loja_E-Comerce\alunos\node_modules\playwright\lib\common\index.js:2235:13)
+    at _TestTypeImpl._createTest (C:\Users\USUARIO\Desktop\Loja_E-Comerce\alunos\node_modules\playwright\lib\common\index.js:2249:24)
+    at test (C:\Users\USUARIO\Desktop\Loja_E-Comerce\alunos\node_modules\playwright\lib\common\index.js:1169:12)
+    at Object.<anonymous> (C:\Users\USUARIO\Desktop\Loja_E-Comerce\alunos\tests\aula02.spec.cjs:19:1)
+Error: No tests found.
+Make sure that arguments are regular expressions matching test files.
+You may need to escape symbols like "$" or "*" and quote the arguments.
+

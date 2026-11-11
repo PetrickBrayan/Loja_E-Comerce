@@ -1,0 +1,109 @@
+npm notice run loja-aurora@1.0.0 npx
+npm notice run playwright test aula05-desempenho.spec.cjs --timeout=90000
+
+Running 4 tests using 1 worker
+
+  ✘  1 tests\interface\aula05-desempenho.spec.cjs:29:1 › RNF-09: em repouso, a tela não repete chamadas a /api/products (janela de 10 s) (2ms)
+  ✘  2 tests\interface\aula05-desempenho.spec.cjs:37:1 › RNF-06: digitar na busca não refaz a chamada nem reconstrói o catálogo a cada tecla (2ms)
+  ✘  3 tests\interface\aula05-desempenho.spec.cjs:56:1 › RNF-07: filtrar várias vezes e clicar em "Atualizar lista" uma vez provoca uma única chamada (2ms)
+  ✘  4 tests\interface\aula05-desempenho.spec.cjs:67:1 › RNF-09/RNF-08: abrir o histórico faz uma chamada a /api/orders e lista os pedidos (2ms)
+
+
+  1) tests\interface\aula05-desempenho.spec.cjs:29:1 › RNF-09: em repouso, a tela não repete chamadas a /api/products (janela de 10 s) 
+
+    Error: browserType.launch: Executable doesn't exist at C:\Users\USUARIO\AppData\Local\ms-playwright\chromium_headless_shell-1248\chrome-headless-shell-win64\chrome-headless-shell.exe
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results\aula05-desempenho-RNF-09-e-74eaf-pi-products-janela-de-10-s-\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\aula05-desempenho-RNF-09-e-74eaf-pi-products-janela-de-10-s-\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\aula05-desempenho-RNF-09-e-74eaf-pi-products-janela-de-10-s-\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests\interface\aula05-desempenho.spec.cjs:37:1 › RNF-06: digitar na busca não refaz a chamada nem reconstrói o catálogo a cada tecla 
+
+    Error: browserType.launch: Executable doesn't exist at C:\Users\USUARIO\AppData\Local\ms-playwright\chromium_headless_shell-1248\chrome-headless-shell-win64\chrome-headless-shell.exe
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results\aula05-desempenho-RNF-06-d-274b4-rói-o-catálogo-a-cada-tecla\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\aula05-desempenho-RNF-06-d-274b4-rói-o-catálogo-a-cada-tecla\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\aula05-desempenho-RNF-06-d-274b4-rói-o-catálogo-a-cada-tecla\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) tests\interface\aula05-desempenho.spec.cjs:56:1 › RNF-07: filtrar várias vezes e clicar em "Atualizar lista" uma vez provoca uma única chamada 
+
+    Error: browserType.launch: Executable doesn't exist at C:\Users\USUARIO\AppData\Local\ms-playwright\chromium_headless_shell-1248\chrome-headless-shell-win64\chrome-headless-shell.exe
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results\aula05-desempenho-RNF-07-f-f8911-z-provoca-uma-única-chamada\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\aula05-desempenho-RNF-07-f-f8911-z-provoca-uma-única-chamada\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\aula05-desempenho-RNF-07-f-f8911-z-provoca-uma-única-chamada\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) tests\interface\aula05-desempenho.spec.cjs:67:1 › RNF-09/RNF-08: abrir o histórico faz uma chamada a /api/orders e lista os pedidos 
+
+    Error: browserType.launch: Executable doesn't exist at C:\Users\USUARIO\AppData\Local\ms-playwright\chromium_headless_shell-1248\chrome-headless-shell-win64\chrome-headless-shell.exe
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results\aula05-desempenho-RNF-09-R-009fe-i-orders-e-lista-os-pedidos\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\aula05-desempenho-RNF-09-R-009fe-i-orders-e-lista-os-pedidos\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\aula05-desempenho-RNF-09-R-009fe-i-orders-e-lista-os-pedidos\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4 failed
+    tests\interface\aula05-desempenho.spec.cjs:29:1 › RNF-09: em repouso, a tela não repete chamadas a /api/products (janela de 10 s) 
+    tests\interface\aula05-desempenho.spec.cjs:37:1 › RNF-06: digitar na busca não refaz a chamada nem reconstrói o catálogo a cada tecla 
+    tests\interface\aula05-desempenho.spec.cjs:56:1 › RNF-07: filtrar várias vezes e clicar em "Atualizar lista" uma vez provoca uma única chamada 
+    tests\interface\aula05-desempenho.spec.cjs:67:1 › RNF-09/RNF-08: abrir o histórico faz uma chamada a /api/orders e lista os pedidos 
+
+To open last HTML report run:
+[36m[39m
+[36m  npx playwright show-report[39m
+[36m[39m
